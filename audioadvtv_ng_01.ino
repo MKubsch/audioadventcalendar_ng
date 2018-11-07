@@ -39,7 +39,10 @@ void setup() {
 // setup rtc
   Wire.begin();
   rtc.begin();
-  rtc.adjust(DateTime(__DATE__, __TIME__));
+  if(!rtc.isrunning()){
+    //following line sets the RTC to the date & time this sketch was compiled
+    rtc.adjust(DateTime(__DATE__, __TIME__));
+    {
 }
 
 void loop() {
